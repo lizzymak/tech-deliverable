@@ -1,39 +1,39 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-function QuoteForm({apiBaseUrl, onQuoteSubmited}){
-    //initialize all the variables were going to use
+function QuoteForm({apiBaseUrl, onQuoteSubmitted}){
+    // Initialize all state variables for the form
     const [name, setName] = useState("")
     const [message, setMessage] = useState("")
     const [error, setError] = useState("")
 
-    //Function to handle submission
+    // Handle form submission
     const handleSubmit = async (e) => {
-        e.preventDefault(); // prevent page reload
+        e.preventDefault(); // Prevent page reload
 
-        if (!name || !message) return //if no name or message was provided we return
+        if (!name || !message) return // Handle form submission
 
-        //create form data object that will be used to send as body to api
+        // Create FormData to send in POST request
         const formData = new FormData();
         formData.append("name", name);
         formData.append("message", message);
 
         try{
 
-            //post to data base the form data object
+            // Send POST request to backend with the form data
             const res = await fetch(`${apiBaseUrl}/quote`, {
             method: "POST",
             body: formData,
             })
 
-            //if our quote was successfully added to database then we reset the from
+            // If quote added successfully, reset form inputs and trigger parent refresh
             if (res.ok) {
                 setName("")
                 setMessage("")
                 setError("")
                 onQuoteSubmitted() // tell parent to refresh quotes
             } 
-            //if quote was not successfully posted then we send an error
+            // If POST failed, set an error message
             else {
             setError("Failed to submit quote. Try again.")
             }
