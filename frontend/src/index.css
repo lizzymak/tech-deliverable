@@ -1,3 +1,174 @@
 :root {
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	--blue: #7ca8fd;
+	--grey: #b1b1b4;
+	--lightP: #a494ad;
+	--darkP: #1c1c1e;
 }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f8;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.App {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+/* Header styles */
+h1 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color:var(--darkP);
+}
+
+h2 {
+  font-weight: 500;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  color:var(--darkP);
+}
+
+/* Website Title */
+.top-header{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.top-header img{
+	width: 100px;      
+	max-width: 30%;     
+	height: auto;      
+	display: block;     
+	margin: 0 auto 0 auto; 
+}
+
+/* Container for each quote Item */
+.container{
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;          
+  	border-radius: 12px;             
+  	box-shadow: 0 4px 8px rgba(0,0,0,0.1);  
+  	padding: 16px;                  
+  	margin-bottom: 12px;             
+	
+}
+
+.container:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+  transition: 0.2s ease-in-out;
+}
+
+/* Change color of username and date in quote container */
+.username{
+	color:var(--blue);
+}
+.date{
+	color: var(--grey);
+}
+
+
+/* This is for the list of quotes */
+.quote-list {
+  display: flex;            /* use flexbox */
+  flex-wrap: wrap;          /* allow items to wrap to next line */
+  gap: 16px;                /* spacing between boxes */
+  justify-content: flex-start; /* align items to start */
+}
+
+
+
+/* Form container */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Input fields */
+form input[type="text"] {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Submit button */
+form button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--blue);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+form button:hover {
+  background-color:#516da5;
+}
+
+
+/* Max-age dropdown */
+select#max-age {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 24px;
+  font-size: 1rem;
+}
+
+/* Container around label + dropdown for spacing */
+.max-age-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  margin-bottom: 24px;
+  gap: 6px; 
+}
+
+/* Label styling */
+.max-age-container label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--darkP);
+  margin-bottom: 5px;
+}
+
+/* Select styling */
+.max-age-container select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.max-age-container select:hover,
+.max-age-container select:focus {
+  border-color: var(--blue);
+  outline: none;
+}
+
+
+
+
+
