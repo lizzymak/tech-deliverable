@@ -10,6 +10,15 @@ from services.database import JSONDatabase
 
 from datetime import datetime, timedelta
 
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+    "http://localhost:5173",  # your frontend URL
+    "http://127.0.0.1:5173",
+]
+
+
+
 
 class Quote(TypedDict):
     name: str
@@ -33,6 +42,13 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
 
 
 app = FastAPI(lifespan=lifespan)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.post("/quote")

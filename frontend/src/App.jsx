@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import QuoteForm from "./components/QuoteForm";
-import QuoteItem from "./components/QuoteItem";
+import QuoteList from "./components/QuoteList";
 
 const API_BASE = "http://localhost:8000" //port out backend runs on
 
@@ -26,8 +26,7 @@ function App() {
         	</select>
       		</label>
 
-			
-
+			<QuoteList apiBaseUrl={API_BASE} maxAge={maxAge} key={refreshKey} />
 			
 		</div>
 	)
