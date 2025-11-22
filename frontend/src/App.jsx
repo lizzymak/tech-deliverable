@@ -1,30 +1,36 @@
 import "./App.css";
+import React, { useState } from "react";
+import QuoteForm from "./components/QuoteForm";
+import QuoteItem from "./components/QuoteItem";
+
+const API_BASE = "http://localhost:8000" //port out backend runs on
 
 function App() {
+	const [maxAge, setMaxAge] = useState(0); // 0 = all quotes
+  	const [refreshKey, setRefreshKey] = useState(0); // to trigger QuoteList refresh
 	return (
 		<div className="App">
 			{/* TODO: include an icon for the quote book */}
 			<h1>Hack at UCI Tech Deliverable</h1>
 
 			<h2>Submit a quote</h2>
-			{/* TODO: implement custom form submission logic to not refresh the page */}
-			<form action="/api/quote" method="post">
-				<label htmlFor="input-name">Name</label>
-				<input type="text" name="name" id="input-name" required />
-				<label htmlFor="input-message">Quote</label>
-				<input type="text" name="message" id="input-message" required />
-				<button type="submit">Submit</button>
-			</form>
+      		<QuoteForm apiBaseUrl={API_BASE} onQuoteSubmitted={() => setRefreshKey((prev) => prev + 1)}/>
 
 			<h2>Previous Quotes</h2>
-			{/* TODO: Display the actual quotes from the database */}
-			<div className="messages">
-				<p>Peter Anteater</p>
-				<p>Zot Zot Zot!</p>
-				<p>Every day</p>
-			</div>
+			<label>Show quotes from:
+        	<select value={maxAge} onChange={(e) => setMaxAge(Number(e.target.value))}>
+          		<option value={7 * 24 * 3600}>Last week</option>
+          		<option value={30 * 24 * 3600}>Last month</option>
+          		<option value={365 * 24 * 3600}>Last year</option>
+          		<option value={0}>All time</option>
+        	</select>
+      		</label>
+
+			
+
+			
 		</div>
-	);
+	)
 }
 
 export default App;
